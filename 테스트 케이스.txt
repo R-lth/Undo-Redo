@@ -1,0 +1,52 @@
+[x] 기본 입력 
+입력 총 횟수: 4
+입력: A, B, C, show
+출력: A, B, C
+----------------------
+[x] 단일 Undo
+입력 총 횟수: 5
+입력: A, B, C, undo, show
+출력: A, B
+
+[x] 연속 Undo
+입력 총 횟수: 7
+입력: A, B, C, D, undo, undo, show
+출력: A, B
+------------------------
+[x] 단일 Redo
+입력 총 횟수: 6
+입력: A, B, C, undo, redo, show
+출력: A, B, C
+
+[x] 연속 Redo
+입력 총 횟수: 9
+입력: A, B, C, D, undo, undo, redo, redo, show
+출력: A, B, C, D
+-------------------------------
+[x] Undo 경계 조건
+입력 총 횟수: 2
+입력: undo, show
+출력: 
+
+[x] Redo 경계 조건
+입력 총 횟수: 5
+입력: A, undo, redo, redo, show
+출력: A
+------------------------
+[x] Redo 무효화
+입력 총 횟수: 5
+입력: A, undo, E, redo, show
+출력: E
+-----------------------
+Undo/Redo 혼
+[x] 
+입력 총 횟수: 9
+입력: A, B, C, D, undo, undo, redo, E, show
+출력: A, B, C, E
+
+[x]
+입력 총 횟수: 6
+입력: A, B, C, undo, D, show
+출력: A, B, D
+
+
