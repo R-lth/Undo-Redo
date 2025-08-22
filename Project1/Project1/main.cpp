@@ -22,7 +22,7 @@ int main()
 		string cmd;
 		cin >> cmd;
 		
-		if (cmd == "A" || cmd == "B" || cmd == "C" || cmd == "D" || cmd == "E") 
+		if (cmd == "A" || cmd == "B" || cmd == "C" || cmd == "D" || cmd == "E")
 		{
 			input.push_back(cmd[0]);
 		}
@@ -49,7 +49,7 @@ int main()
 					input.pop_front();
 				}
 
-				while (!input.empty() && input.front() == 'U')
+				while (!input.empty() && !skill.empty() && input.front() == 'U')
 				{
 					skill.pop_back();
 					input.pop_front();
@@ -65,7 +65,7 @@ int main()
 		else 
 		{
 			cout << i << "\n";
-			cout << "잘못된 명령 입니다.\n";
+			cout << "잘못된 입력 입니다.\n";
 			break;
 		}
 	}
