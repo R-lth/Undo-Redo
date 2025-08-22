@@ -1,6 +1,7 @@
 ﻿#include <iostream>
 #include <deque>
-#include <stack>
+
+#include "Command.h"
 
 using namespace std;
 
@@ -16,57 +17,13 @@ int main()
 	cin >> n;
 
 	cout << "==입력==\n";
-	deque<char> input;
+	Input* input = new Input();
+	InputCmd* inputCmd = new InputCmd(input);
+
 	for (int i = 0; i < n; ++i) 
 	{
-		string cmd;
-		cin >> cmd;
-		
-		if (cmd == "A" || cmd == "B" || cmd == "C" || cmd == "D" || cmd == "E")
-		{
-			input.push_back(cmd[0]);
-		}
-		else if (cmd == "Undo")
-		{
-			input.push_back('U');
-		}
-		else if (cmd == "Redo")
-		{
-			if (!input.empty() && input.back() == 'U')
-			{
-				input.pop_back();
-			}
-		}
-		else if (cmd == "Show")
-		{
-			deque<char> skill;
-
-			while (!input.empty())
-			{
-				if (input.front() != 'U') 
-				{
-					skill.push_back(input.front());
-					input.pop_front();
-				}
-
-				while (!input.empty() && !skill.empty() && input.front() == 'U')
-				{
-					skill.pop_back();
-					input.pop_front();
-				}
-			}
-
-			while (!skill.empty()) 
-			{
-				cout << skill.front() << " ";
-				skill.pop_front();
-			}
-		}
-		else 
-		{
-			cout << i << "\n";
-			cout << "잘못된 입력 입니다.\n";
-			break;
-		}
+		inputCmd->execute();
 	}
+
+	cin.get();
 }
