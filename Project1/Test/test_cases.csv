@@ -1,0 +1,11 @@
+﻿Cmd
+"A,B,C,S"
+"A,B,C,U,S"
+"A,B,C,D,U,U,S"
+"A,B,C,U,R,S"
+"A,B,C,D,U,U,R,R,S"
+"U,S"
+"A,U,R,R,S"
+"A,U,E,R,S"
+"A,B,C,D,U,U,R,E,S"
+"A,B,C,U,D,S"

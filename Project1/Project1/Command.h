@@ -1,11 +1,11 @@
-#pragma once
+ï»¿#pragma once
 
 #include "Input.h"
 
 class ICommand
 {
 public:
-	virtual void execute() = 0;
+	virtual void execute(char cmd) = 0;
 	virtual void undo() = 0;
 };
 
@@ -16,6 +16,7 @@ public:
 		: input(input)
 	{
 	}
+
 	~InputCmd() 
 	{
 		if (input != nullptr) 
@@ -26,28 +27,22 @@ public:
 	}
 
 public:
-	virtual void execute() override
+	virtual void execute(char cmd) override
 	{
-		string cmd;
-		cin >> cmd;
-
-		if (cmd == "A" || cmd == "B" || cmd == "C" || cmd == "D" || cmd == "E")
+		if (cmd == 'A' || cmd == 'B' || cmd == 'C' || cmd == 'D' || cmd == 'E')
 		{
-			input->pushInput(cmd[0]);
+			input->pushInput(cmd);
 		}
-		else if (cmd == "Undo")
+		else if (cmd == 'U')
 		{
 			input->pushUndo();
 		}
-		else if (cmd == "Redo")
+		else if (cmd == 'R')
 		{
 			input->redo();
 		}
-		else if (cmd == "Show")
+		else if (cmd == 'S')
 		{
-			// TODO. ÃÊ±âÈ­ °í·ÁÇÏ±â
-			//input->getSkillDB().clear();
-
 			while (!input->getInputDB().empty())
 			{
 				input->pushSkill();
@@ -58,7 +53,7 @@ public:
 		}
 		else
 		{
-			cout << "Àß¸øµÈ ÀÔ·ÂÀÔ´Ï´Ù.\n";
+			cout << "ìž˜ëª»ëœ ìž…ë ¥ìž…ë‹ˆë‹¤.\n";
 		}
 	}
 
