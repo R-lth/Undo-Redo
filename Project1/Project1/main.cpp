@@ -15,20 +15,6 @@ void SafeDelete(T*& t)
     }
 }
 
-char getChar(string str) 
-{
-    // skill
-    if ((str == "\"A") || (str == "A") || (str == "A\"")) return 'A';
-    else if ((str == "\"B") || (str == "B") || (str == "B\"")) return 'B';
-    else if ((str == "\"C") || (str == "C") || (str == "C\"")) return 'C';
-    else if ((str == "\"D") || (str == "D") || (str == "D\"")) return 'D';
-    else if ((str == "\"E") || (str == "E") || (str == "E\"")) return 'E';
-    // cmd
-    else if ((str == "\"U") || (str == "U") || (str == "U\"")) return 'U';
-    else if ((str == "\"R") || (str == "R") || (str == "R\"")) return 'R';
-    else if ((str == "\"S") || (str == "S") || (str == "S\"")) return 'S';
-}
-
 int main()
 {
 #pragma region 파일 가져오기
@@ -60,8 +46,22 @@ int main()
 
         while (getline(ss, str, ','))
         {
-            char ch = getChar(str);
-            inputCmd->execute(ch);
+            // \"A, A, A"\을 A로 인식
+            if (!str.empty())
+            {
+                // 앞뒤 따옴표 제거
+                //if (str.front() == '\"') str.erase(0, 1);
+                //if (str.back() == '\"') str.pop_back();
+
+                // 앞뒤 따옴표 제거
+                str.erase(remove(str.begin(), str.end(), '"'), str.end());
+
+                // 문자 입력
+                if (str.length() == 1) 
+                {
+                    inputCmd->execute(str[0]);
+                }
+            }
         }
 
         SafeDelete(inputCmd);
