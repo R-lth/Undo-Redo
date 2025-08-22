@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include <deque>
 #include <iostream>
 
@@ -47,6 +47,12 @@ public:
 			skillDB.pop_back();
 			inputDB.pop_front();
 		}
+
+		// 되돌릴 게 없는데 'U'가 앞에 쌓인 경우, 소거
+		while (!inputDB.empty() && inputDB.front() == 'U' && skillDB.empty())
+		{
+			inputDB.pop_front();
+		}
 	}
 
 	void redo() 
@@ -64,6 +70,7 @@ public:
 			cout << skillDB.front() << " ";
 			skillDB.pop_front();
 		}
+		cout << "\n";
 	}
 
 private:
